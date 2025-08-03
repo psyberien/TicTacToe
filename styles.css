@@ -1,0 +1,30 @@
+.container{
+    color: white;
+    justify-items: center;
+}
+
+.board {
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 300px;
+    height: 300px;
+    outline: 2px solid black;
+}
+
+body {
+    background-color: black;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  outline: 2px solid white;
+  margin: 0;
+  background: black;
+  cursor: pointer;
+}

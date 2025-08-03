@@ -22,7 +22,26 @@ function checkGame(arr){
         }
     }
 }
+function Gameboard(){
+    const gameboard = new Array(9);
 
-function gameBoard(){
-    const gameboard = new Array(6);
+    const getBoard = () => gameboard;
+
+    return {getBoard};
 }
+
+function screenController(){
+    const boardDiv = document.querySelector(".board");
+    const game = Gameboard();
+    const board = game.getBoard();
+
+    for(let cell of board){
+        const cellDiv = document.createElement("div");
+        cellDiv.classList.add("cell");
+        
+        boardDiv.appendChild(cellDiv);
+    }
+
+}
+
+screenController();
