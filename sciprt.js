@@ -35,13 +35,32 @@ function screenController(){
     const game = Gameboard();
     const board = game.getBoard();
 
-    for(let cell of board){
-        const cellDiv = document.createElement("div");
-        cellDiv.classList.add("cell");
-        
-        boardDiv.appendChild(cellDiv);
-    }
+    updateScreen();
+    function updateScreen(){
+            boardDiv.replaceChildren();
+            for(let cell of board){
+            const cellDiv = document.createElement("div");
+            cellDiv.classList.add("cell");
+            if(cell != undefined){
+                cellDiv.textContent = cell.valueOf();
+            }
+            cellDiv.style.fontSize = "69px";
+            cellDiv.style.fontWeight = "bold";
+            boardDiv.appendChild(cellDiv);
+        }
 
+        const cells = document.querySelectorAll(".cell");
+
+        cells.forEach((cell , index) => {
+            cell.addEventListener("click", ()=> {
+                board[index] = "X";
+                console.log(board);
+                console.log(`${index}`);
+                updateScreen();
+            })
+        })
+    }
+    
 }
 
 screenController();
