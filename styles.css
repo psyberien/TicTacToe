@@ -45,3 +45,7 @@ body {
     font-size: 14px;
     font-weight: bold;
 }
+
+.winner{
+    color: green;
+}
