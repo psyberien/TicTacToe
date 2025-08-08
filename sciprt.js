@@ -3,7 +3,17 @@ function Gameboard(){
 
     const getBoard = () => gameboard;
 
-    return {getBoard};
+    const printBoard = () => {
+        const boardDiv = document.querySelector(".board");
+        for(let cell of gameboard){
+            const cellDiv = document.createElement("div");
+            cellDiv.classList.add("cell");
+            cellDiv.style.fontSize = "69px";
+            cellDiv.style.fontWeight = "bold";
+            boardDiv.appendChild(cellDiv);
+        }
+    }
+    return {getBoard, printBoard};
 }
 
 function gameController(playerOneName, playerTwoName) {
@@ -34,7 +44,6 @@ function gameController(playerOneName, playerTwoName) {
 function displayController(){
     const boardDiv = document.querySelector(".board");
     const playerTurnDiv = document.querySelector(".turn");
-    const playerWon = document.querySelector(".winner");
     const playerOne = prompt("Enter player one name", "Player One Name");
     const playerTwo = prompt("Enter player two name", "Player Two Name");
     const game = gameController(playerOne, playerTwo);
@@ -106,9 +115,11 @@ function displayController(){
         }
     }
 }
-
+const game = Gameboard();
+game.printBoard();
 
 const myButton = document.querySelector(".startBtn");
 myButton.addEventListener("click", function(event){
+    myButton.textContent = "Restart";
     displayController();
 })
